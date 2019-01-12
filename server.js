@@ -12,8 +12,10 @@ const passport = require('passport');
 // const { james: jimmy, robert: bobby } = actorSurnames;
 // console.log(jimmy); // Stewart - the variable name is jimmy, not james
 // console.log(bobby); // De Niro - the variable name is bobby, not robert
-const { router: usersRouter } = require('./users');
+const {router: usersRouter}  = require('./routes/users');
 const { router: authRouter, localStrategy, jwtStrategy } = require('./auth');
+const projectsRouter = require('./routes/projects');
+const tasksRouter = require('./routes/tasks');
 
 mongoose.Promise = global.Promise;
 
@@ -40,6 +42,8 @@ passport.use(jwtStrategy);
 
 app.use('/api/users/', usersRouter);
 app.use('/api/auth/', authRouter);
+app.use('/api/projects/', projectsRouter);
+app.use('/api/tasks/', tasksRouter);
 
 const jwtAuth = passport.authenticate('jwt', { session: false });
 
@@ -65,6 +69,7 @@ function runServer(databaseUrl, port = PORT) {
       if (err) {
         return reject(err);
       }
+      mongoose.set('debug', true);
       server = app.listen(port, () => {
         console.log(`Your app is listening on port ${port}`);
         resolve();
