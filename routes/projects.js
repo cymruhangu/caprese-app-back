@@ -72,7 +72,7 @@ router.post('/', jsonParser, (req, res) => {
   })
   .then(project => {
       res.status(201).json(project.serialize);
-      console.log(`new project ID is ${project.id}`);
+      console.log(`new project is ${project}`);
   })
   .catch(err => {
     console.log(err);
