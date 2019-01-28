@@ -14,22 +14,26 @@ const projectSchema = new mongoose.Schema({
     description: String,
     budget: Number,
     remaining: Number,
-    // tasks:[{type: mongoose.Schema.Types.ObjectId, ref: 'tasks'}],
-    tasks: [],
+    tasks:[{type: mongoose.Schema.Types.ObjectId, ref: 'Task'}],
     isActive: {type: Boolean, default: true}
 });
 
 projectSchema.pre('find', function(next) {
     this.populate('owner');
-    this.populate('tasks');
+    // this.populate('tasks');
     next();
 });
 
 projectSchema.pre('findOne', function(next) {
     this.populate('owner');
-    this.populate('tasks');
+    // this.populate('tasks');
     next();
 });
+
+projectSchema.post('save', function(next){
+  console.log('this ran');
+  this.populate('owner');
+  });
 
 projectSchema.methods.serialize = function() {
     return {

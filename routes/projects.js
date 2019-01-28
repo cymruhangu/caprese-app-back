@@ -67,11 +67,10 @@ router.post('/', jsonParser, (req, res) => {
       owner: req.body.owner,
       description: req.body.description,
       budget: req.body.budget,
-      remaining: req.body.remaining,
-      tasks: req.body.tasks
+      remaining: req.body.remaining
   })
   .then(project => {
-      res.status(201).json(project.serialize);
+      res.status(201).json(project.serialize());
       console.log(`new project is ${project}`);
   })
   .catch(err => {

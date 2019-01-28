@@ -2,6 +2,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const { Task } = require('../models/Task');
+const { Project } = require('../models/Project');
 
 const router = express.Router();
 
@@ -11,9 +12,10 @@ router.get('/', jsonParser, (req, res) => {
   Task
     .find()
     .then(tasks => {
-      res.json({
-        tasks: tasks.map(task => task.serialize())
-      });
+      res.json(tasks);
+      // res.json({
+      //   tasks: tasks.map(task => task.serialize())
+      // });
       })
     .catch(err => {
       //   console.error(err);
@@ -52,11 +54,10 @@ router.post('/', jsonParser, (req, res) => {
     name: req.body.name,
     description: req.body.description,
     budget: req.body.budget,
-    remaining: req.body.remaining,
-    tasks: req.body.tasks
+    remaining: req.body.remaining
   })
   .then(task => {
-    res.status(201).json(task.serialize);
+    res.status(201).json(task.serialize());
     console.log(`new task ID is ${task.id}`);
   })
   .catch(err => {
@@ -75,7 +76,7 @@ router.put('/:id', jsonParser, (req, res) => {
     return res.status(400).json({ message: message });
   }
     const toUpdate = {};
-    const updateableFields = ["name", "parent", "description", "budget", "remaining", "tasks", "isActive"];
+    const updateableFields = ["name", "parent", "description", "budget", "remaining", "isActive"];
 
     updateableFields.forEach(field => {
       if (field in req.body) {
