@@ -19,11 +19,9 @@ router.get('/',  (req, res) => {
       Project
           .find()
           .then(projects => {
-            res.json(projects);
-            // res.json({
-            //   projects: projects.map(project => project.serialize())
-            // });
-            // console.log(projects);
+            // res.json(projects);
+            res.json(projects.map(project => project.serialize())
+            );
             })
           .catch(err => {
               console.error(err);
@@ -70,9 +68,14 @@ router.post('/', jsonParser, (req, res) => {
       remaining: req.body.remaining
   })
   .then(project => {
-      res.status(201).json(project.serialize());
-      console.log(`new project is ${project}`);
-  })
+    project
+      .populate('owner')
+      .execPopulate()
+      .then(result => {
+        console.log(result.serialize());
+        res.status(201).json(result.serialize());
+      }
+  )})
   .catch(err => {
     console.log(err);
       res.status(500).json({message: "Internal server error"});

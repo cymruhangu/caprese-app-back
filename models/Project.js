@@ -8,7 +8,7 @@ const projectSchema = new mongoose.Schema({
     name: {type: String, required: true},
     owner: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'User' 
     },
     // owner: String,
     description: String,
@@ -32,7 +32,7 @@ projectSchema.pre('findOne', function(next) {
 
 projectSchema.post('save', function(next){
   console.log('this ran');
-  this.populate('owner');
+  // this.populate('owner');
   });
 
 projectSchema.methods.serialize = function() {
