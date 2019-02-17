@@ -12,10 +12,8 @@ router.get('/', jsonParser, (req, res) => {
   Task
     .find()
     .then(tasks => {
-      res.json(tasks);
-      // res.json({
-      //   tasks: tasks.map(task => task.serialize())
-      // });
+      res.json(tasks.map(task => task.serialize())
+      );
       })
     .catch(err => {
       //   console.error(err);

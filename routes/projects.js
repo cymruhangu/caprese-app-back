@@ -19,7 +19,6 @@ router.get('/',  (req, res) => {
       Project
           .find()
           .then(projects => {
-            // res.json(projects);
             res.json(projects.map(project => project.serialize())
             );
             })
