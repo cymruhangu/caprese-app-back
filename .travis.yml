@@ -1,0 +1,8 @@
+deploy:
+  provider: heroku
+  edge: true
+  api_key:
+    secure: s1O5aWVi3zPX84S1zOBmkAZmaGHtKKMRk6d35J4ACaFJcDZEuVpP4TIzshrBfq/MaBP0lpgfao+OcEEGRgrv9AJsXTsvK4zbGjuyBgXh5/mA8E4a4ffxWn5Dvzq00VcIYXHuNfHebUwf34wYp0H/r+/lgQo3xt5MQUdIanNBSxQJUpYBCWKH+wzDOUEJZt5CbBmyYkAdqqC4IQsLidGShSB7nTYcOblUwK/U7a1ahn2gwi4HE7AlGMp7++que6VHTB6tNfZx7o+UcKOuP0VHxT9DdBDQ7Waf7Q9cCa2aU5N9iudF3hrR5f7Yq96N6j90WwLo/QM/ii25FlTb5555AeCr/qhoGEERxo/pSp6xPLjziqRooGq/KlBLhjsN9rO78ot8UmtBud2UQECPliJCGgNeSPfrZ1C3WXrRDgQ/CLzmYpShCFt304h77gYofMJOVm3JE814z7ZI1eaoJrXy7VG8zSfHxkcpix6+GQNvubGMhr5zuaT4p5/m31dPLmU6okW6xR7gWzuvd9Nxa4YHb4f/tBLgFb9zPsEjqymdinRceORobO/Z4RY9ZddUii7pHfiHbBGxD0LtUeH1ZtSAqvwT47xkmIuMTBmLJST+j7cX4bb6epnTJtTx3ScT+e5p1dBxwA4DcPrSuhWuUNR7M2w/fp7M9pXHHwzLjvR1uEc=
+  app: guarded-wave-33606
+  on:
+    repo: cymruhangu/caprese-app-back
