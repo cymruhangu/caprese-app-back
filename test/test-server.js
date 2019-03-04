@@ -14,7 +14,7 @@ const chaiHttp = require('chai-http');
   after(function(){
     return closeServer()
   });
-
+  //Test GET projects
    it('should 200 on GET requests', function() {
      return chai.request(app)
        .get('/api/projects')
@@ -23,4 +23,13 @@ const chaiHttp = require('chai-http');
          res.should.be.json;
        });
    });
- });
+
+//TEST POST project
+
+//TEST PUT project
+
+//TEST DELETE project
+
+
+ }); //end describe
+ 
