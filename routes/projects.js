@@ -15,7 +15,7 @@ const jsonParser = bodyParser.json();
 // @route   GET api/projects
 // @desc    Get projects
 // @access  Public
-router.get('/',  (req, res) => {
+router.get('/', jwtAuth, (req, res) => {
       Project
           .find()
           .then(projects => {
@@ -104,14 +104,14 @@ router.put('/:id', jsonParser, (req, res) => {
 
     Project
       .findByIdAndUpdate(req.params.id, { $set: toUpdate})
-      .then(project => res.status(204).end())   //????
+      .then(project => res.status(204).end())   
       .catch(err => res.status(500).json({ message: "Internal server error" }));
 });
 
 // @route   DELETE api/projects/:id
 // @desc    Delete a project
 // @access  Public
-router.delete('/:id',  (req, res) => {
+router.delete('/:id', jwtAuth, (req, res) => {
     console.log(req.params.id);
     Project
     .findByIdAndRemove(req.params.id)
