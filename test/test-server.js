@@ -14,22 +14,15 @@ const chaiHttp = require('chai-http');
   after(function(){
     return closeServer()
   });
-  //Test GET projects
+  //Test GET users
    it('should 200 on GET requests', function() {
      return chai.request(app)
-       .get('/api/projects')
+       .get('/api/users')
        .then(function(res) {
          res.should.have.status(200);
          res.should.be.json;
        });
    });
 
-//TEST POST project
-
-//TEST PUT project
-
-//TEST DELETE project
-
-
- }); //end describe
+}); //end describe
  

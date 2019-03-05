@@ -48,8 +48,6 @@ router.get('/:id', (req, res) => {
 // @desc    create new project
 // @access  Public
 router.post('/', jsonParser, (req, res) => {
-    console.log('req.body is:');
-    console.log(req.body);
     const requiredFields = ['name', 'owner','description', 'budget'];
     for(let i=0; i<requiredFields.length; i++){
         const field = requiredFields[i];
@@ -112,7 +110,6 @@ router.put('/:id', jsonParser, (req, res) => {
 // @desc    Delete a project
 // @access  Public
 router.delete('/:id', jwtAuth, (req, res) => {
-    console.log(req.params.id);
     Project
     .findByIdAndRemove(req.params.id)
     .then(project => res.status(204).end())
